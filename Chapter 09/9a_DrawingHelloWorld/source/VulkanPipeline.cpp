@@ -56,7 +56,10 @@ void VulkanPipeline::createPipelineCache()
 bool VulkanPipeline::createPipeline(VulkanDrawable* drawableObj, VkPipeline* pipeline, VulkanShader* shaderObj, VkBool32 includeDepth, VkBool32 includeVi)
 {
 	// Initialize the dynamic states, initially it’s empty
-	VkDynamicState dynamicStateEnables[VK_DYNAMIC_STATE_RANGE_SIZE];
+	//VkDynamicState dynamicStateEnables[VK_DYNAMIC_STATE_RANGE_SIZE];
+	//the enum has been removed in 1.2.140:https://github.com/LunarG/VulkanSamples/issues/293
+	//https://github.com/LunarG/VulkanSamples/pull/294/files
+	VkDynamicState dynamicStateEnables[2];// Viewport + Scissor
 	memset(dynamicStateEnables, 0, sizeof dynamicStateEnables);
 
 	// Specify the dynamic state information to pipeline through
